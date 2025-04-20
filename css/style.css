@@ -1,0 +1,320 @@
+@charset "UTF-8";
+/*====================
+スマホを基本設計にする
+ - 〜479px：スマートフォン縦
+ - 480px〜599px：スマートフォン横
+ - 600px〜959px：タブレット
+ - 960px〜1279px：小型PC
+ - 1280px〜：大型PC
+====================*/
+
+html {
+  font-size: 100%;
+  /* デフォルトのフォントサイズが16px */
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #24292e;
+  font-family: "Sawarabi Gothic";
+    /* フォントファミリーの記述をGoogleフォントからコピーしてもってくる */
+}
+
+/* aタグの下線を消す */
+
+a {
+  text-decoration: none;
+}
+
+/* 1.3remデフォルトのフォントサイズから1.3倍の大きさ */
+/* rem指定の方がbodyタグのデフォルトのフォントサイズを変更するだけでrem指定したフォント全部が簡単に変更可能になる。 */
+
+p {
+  font-size: 1.3rem;
+}
+
+img {
+  max-width: 100%; /* スマホサイズでも画像が縮小される。 */
+}
+
+li {
+  list-style: none; /*箇条書きの・を消すことができる。 */
+  font-size: 1.2rem;
+}
+
+/* wrapperは共通 */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto 130px auto;
+  font-size: 0.9rem; /* root em 最上位階層のHTML要素であるHTMLの文字サイズを基準とした相対値。HTMLの文字サイズを変更することで全体の文字サイズも変更できる */
+  padding: 0 4%;
+}
+
+.site-title { /* ヘッダーだけでなく他の見出しにもつけたいのでヘッダーの外に記述した */
+  line-height: 1px;
+  font-weight: 600;
+  font-size: 2.4rem;
+}
+
+.site-title a {
+  display: block;
+  color: #24292e;
+}
+
+.sec-title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 65px;
+}
+
+/*----------------------------------------------
+ヘッダー
+------------------------------------------------*/
+#header {
+  max-width: 960px; /* 幅が960px以上にならない */
+  display: flex; /* 親要素に指定することで子要素を横並びにする */
+  align-items: center; /* 交差軸にたいして中央揃え */
+  justify-content: space-between; /* jccでタブボタンでショートカット、子要素を端と端にもっていき間をあける */
+  height: 170px;
+  margin: 0 auto; /* headerタグ自体を中央寄せ */
+  padding: 0 4%; /* 画面幅を変えても横に4%分の余白をあけてくれる */
+}
+
+#header ul {
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+}
+
+#header li {
+  font-size: 0.9rem;
+  margin-left: 30px; /* きつきつなので余白をあける */
+}
+
+header li a {
+  color: #24292e;
+  transition: all 0.3s; /* 0.3秒かけて透明度が0.5になる */
+}
+
+#header li a:hover {
+  opacity: 0.5;
+}
+
+#header li img.icon {
+  width: 30px; /* アイコンを小さくする */
+}
+
+/*-------------------------------------------
+Mainvisual
+-------------------------------------------*/
+#mainvisual {
+  margin-bottom: 80px; /* Aboutとの余白をあける */
+}
+
+#mainvisual img {
+  width: 100%;
+  max-width: 1920px;
+  height: 400px;
+  object-fit: cover; /* 画像の比率を保つ */
+}
+
+/*-------------------------------------------
+About
+-------------------------------------------*/
+#about ul {
+  margin-bottom: 30px;
+}
+
+#about ul li {
+  margin-bottom: 3px;
+}
+
+#about ul li:first-child {
+  margin-bottom: 30px;
+}
+
+#about p {
+  text-align: justify;
+}
+
+/*-------------------------------------------
+Works
+-------------------------------------------*/
+#works ul {
+  display: flex;
+  justify-content: space-between;  /* liのwidthを31%にしたので7%右に余白ができるので均等に配置した */
+  flex-wrap: wrap;  /* 子要素を折り返してくれる */
+  margin-bottom: 50px;
+}
+
+#works ul li {
+  width: 31%;
+  margin-bottom: 23px;
+}
+
+#works ul li img {
+  cursor: pointer;
+  width: 640px;
+  max-height: 417px;
+  transition: all 0.3s;  /* ホバーしたらすぐに切り替わらないように0.3秒かける */
+}
+
+#works ul li img:hover {
+  transform: scale(1.2, 1.2);  /* ホバーしたら画像の大きさが1.2倍になる */
+  opacity: 0.7;  /* ホバーしたらちょっと透明になる */
+}
+
+/*-------------------------------------------
+News
+-------------------------------------------*/
+#news dl {
+  display: flex; /* dlタグにあてることで子要素のdt,ddタグを横並びにする*/
+  flex-wrap: wrap; /* 折り返すのだがwidthを指定していないため連続で表示されている*/
+  border-top: solid 1px #c8c8c8; /* 一番上にボーダーを引く*/
+  margin-bottom: 20px;
+}
+
+#news dt {
+  width: 20%; /* 一行にdd,dtを並べる*/
+  border-bottom: solid 1px #c8c8c8; /* 一行ずつ下線のボーダーを引いていく*/
+  padding: 15px;
+}
+
+#news dd {
+  width: 80%; /* 一行にdd,dtを並べる*/
+  border-bottom: solid 1px #c8c8c8; /* 一行ずつ下線のボーダーを引いていく*/
+  padding: 15px;
+}
+
+/*-------------------------------------------
+Contact
+-------------------------------------------*/
+#contact p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#contact dl {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+#contact dt {
+  width: 15%;
+}
+
+#contact dd {
+  width: 85%;
+  margin-bottom: 10px;
+}
+
+#contact dd input,
+#contact dd textarea {
+  width: 100%;
+  border: solid 1px #c8c8c8;
+  /* 枠線をつけることで見やすくする */
+  padding: 10px;
+}
+
+#contact dd textarea {
+  height: 10rem;
+  /* テキストエリアの高さを固定*/
+}
+
+#contact .button {
+  text-align: center;
+}
+
+#contact .button input {
+  border: solid 1px #24292e;
+  width: 200px;
+  background-color: #24292e;
+  color: #fff;
+  padding: 15px 0;
+  transition: all 0.3s;
+}
+
+#contact .button input:hover {
+  background: #fff;
+  color: #24292e;
+}
+/*----------------------------------------------
+SP（スマートフォン）
+------------------------------------------------*/
+/* pcファースト　大きいサイズから小さいサイズへ */
+/* 600pxより小さいときのcss適用 */
+@media screen and (max-width: 600px) {
+  .wrapper {
+    margin-bottom: 70px;
+  }
+
+  .site-title {
+    margin-top: 20px; /* 画面から見切れていたり余白がぎちぎちなので調整 */
+  }
+
+  .sec-title {
+    margin-bottom: 40px;
+  }
+
+  /* ヘッダー */
+  #header {
+    max-width: 100%;
+    height: auto;
+    flex-direction: column; /* 縦並び */
+    margin-top: 20px;
+    line-height: 40px;
+  }
+
+  #header li {
+    font-size: 0.8rem;
+    margin-left: 20px;
+  }
+
+  #header li:first-child {
+    margin-left: 0;
+  }
+
+  #header li img.icon {
+    width: 20px;
+    margin-top: 15px;
+  }
+
+  /* works */
+  #works ul {
+    flex-direction: column;
+  }
+
+  #works ul li {
+    width: 100%;  /* widthを31%で設定しているので100%に戻す */
+  }
+
+  /* news */
+  #news dl {
+    flex-direction: column; /* 縦並びにする*/
+  }
+
+  #news dt {
+    width: 100%; /* 20%で指定しているとボーダーが中途半端なので100%に変更*/
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  #news dd {
+    width: 100%; /* 80%で指定しているとボーダーが中途半端なので100%に変更*/
+    padding-top: 0;
+  }
+
+  /* contact */
+  #contact dl {
+    flex-direction: column;
+  }
+
+  #contact dt {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  #contact dd {
+    width: 100%;
+  }
+}
